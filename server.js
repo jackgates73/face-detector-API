@@ -8,7 +8,7 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const app = express();
 app.use(bodyParser.json());
@@ -35,7 +35,7 @@ app.put('/image', (req, res) => { image.handleImage(req,res,db)})
 app.post('/imageurl', (req, res) => { image.handleApiCall(req,res)})
 
 app.listen(process.env.PORT || 3000, ()=> {
-	console.log('app running on ${process.env.PORT}')
+	console.log(`app running on ${process.env.PORT}`)
 })
 
 
